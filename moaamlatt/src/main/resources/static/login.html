@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<!-- Created By CodingNepal - www.codingnepalweb.com -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dropdown Menu with Search Box | CodingNepal</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <script src="https://kit.fontawesome.com/a076d05399.js"></script> -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="style.css" />
+</head>
+<script>
+    
+
+
+    var loggedin = localStorage.getItem("loggin");
+        if (loggedin === null) {
+          
+        } else {
+            window.location.replace("logout.html");
+        }
+
+
+
+
+
+</script>
+
+<body style="  background: rgb(55,55,55);min-height: 100vm;">
+    <div class="wrapper">
+        <nav>
+            <input type="checkbox" id="show-search">
+            <input type="checkbox" id="show-menu">
+            <label for="show-menu" class="menu-icon"><img src="logo.png" style="max-height: 3em;margin-top: 1.5em;" alt=""></label>
+            <div class="content">
+                <div class="logo"><a href="#">mo3amlatkom Ashal!!</a></div>
+                <ul class="links">
+                    <li><a href="index.html">Home</a></li>
+                    </li>
+                 
+                </ul>
+            </div>
+            <label for="show-search" class="search-icon"><img src="search.png" style="max-height: 2em;margin-top: 1em;" alt=""></label>
+            <form action="#" class="search-box">
+                <input type="text" placeholder="Type Something to Search..." required>
+                <button style="margin-right: em;" type="submit" class="go-icon"><img src="arrow.png" style="max-height: 2em;margin-top: 0.3em;background: transparent;" alt=""></button>
+            </form>
+        </nav>
+    </div>
+
+
+    <table style="padding-top: 4.2em;">
+
+
+
+
+
+
+
+
+        <tr>
+            <td>
+                <!-- Contenedor -->
+                <div class="container">
+                    <div class="forms-container">
+                        <div class="signin-signup">
+                            <form class="sign-in-form">
+                                <h2 class="title">Sign in</h2>
+                                <div class="input-field">
+                                    <i class="fas fa-user"></i>
+                                    <input type="email" id="logInEmail" placeholder="Email" required name="log-email" />
+                                </div>
+                                <div class="input-field">
+                                    <i class="fas fa-lock"></i>
+                                    <input type="password" id="logInPassword" placeholder="Password" required name="log-password" />
+                                </div>
+                                <button type="button" onclick="mainlogin();" class="btn">Register</button>
+                         
+                                <p class="social-text">Or Sign in with social platforms</p>
+                                <div class="social-media">
+                                    <a href="#" class="social-icon">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                    <a href="#" class="social-icon">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a href="#" class="social-icon">
+                                        <i class="fab fa-google"></i>
+                                    </a>
+                                    <a href="#" class="social-icon">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                </div>
+                            </form>
+
+                            <form class="sign-up-form">
+                                <h2 class="title">Sign up</h2>
+                                <div class="input-field">
+                                    <i class="fas fa-user"></i>
+                                    <input id="registerEmail" type="email" name="registerEmail" placeholder="Email" required />
+                                </div>
+                                <div class="input-field">
+                                    <i class="fas fa-lock"></i>
+                                    <input id="registerPassword" type="password" name="registerPassword" placeholder="Password" required />
+                                </div>
+                                <div class="input-field">
+                                    <i class="fas fa-lock"></i>
+                                    <input type="password" id="RepeatedRegisterPassword" name="RepeatedRegisterPassword" placeholder="Repeat-Password" required />
+                                </div>
+                                <button type="button" onclick="mainregister();" class="btn">Register</button>
+                         
+                                <p class="social-text">Or Sign up with social platforms</p>
+                                <div class="social-media">
+                                    <a href="#" class="social-icon">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                    <a href="#" class="social-icon">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a href="#" class="social-icon">
+                                        <i class="fab fa-google"></i>
+                                    </a>
+                                    <a href="#" class="social-icon">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                </div>
+
+                        </div>
+                    </div>
+                    </form>
+
+                    <div class="panels-container">
+                        <div class="panel left-panel">
+                            <div class="content">
+                                <h3>New here ?</h3>
+                                <p style="color: red;"id="loginerrorpanel">
+                             </p>
+                                <button class="btn transparent" id="sign-up-btn">
+            Sign up
+          </button>
+                            </div>
+                            <img src="img/log.svg" class="image" alt="" />
+                        </div>
+                        <div class="panel right-panel">
+                            <div class="content">
+                                <h3>One of us ?</h3>
+                                <p style="color: red;" id="registererrorpanel">
+                         </p>
+                            <button class="btn transparent" id="sign-in-btn">
+            Sign in
+          </button>
+                            </div>
+                            <img src="img/register.svg" class="image" alt="" />
+                        </div>
+                    </div>
+                </div>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <footer style="margin-top: auto;" class="flex-rw">
+
+                    <ul class="footer-list-top">
+                        <li>
+                            <h4 class="footer-list-header">About Pavilion</h4>
+                        </li>
+                        <li><a href='/shop/about-mission' class="generic-anchor footer-list-anchor" itemprop="significantLink">GET TO KNOW US</a></li>
+                        <li><a href='/promos.html' class="generic-anchor footer-list-anchor" itemprop="significantLink">PROMOS</a></li>
+                        <li><a href='/retailers/new-retailers.html' class="generic-anchor footer-list-anchor" itemprop="significantLink">BECOME A RETAILER</a></li>
+
+                        <li><a href='/job-openings.html' itemprop="significantLink" class="generic-anchor footer-list-anchor">JOB OPENINGS</a></li>
+
+                        <li><a href='/shop/about-show-schedule' class="generic-anchor footer-list-anchor" itemprop="significantLink">EVENTS</a></li>
+                    </ul>
+                    <ul class="footer-list-top">
+                        <li>
+                            <h4 class="footer-list-header">The Gift Selection</h4>
+                        </li>
+
+
+                        <li><a href='/Angels/cat/id/70' class="generic-anchor footer-list-anchor">ANGEL FIGURINES</a></li>
+                        <li><a href='/Home-Decor/cat/id/64' class="generic-anchor footer-list-anchor">HOME DECOR</a></li>
+                        <li><a href='/Mugs/cat/id/32' class="generic-anchor footer-list-anchor">MUGS</a></li>
+                        <li><a href='/Pet-Lover/cat/id/108' class="generic-anchor footer-list-anchor">PET LOVER</a></li>
+                        <li><a href='/Ladies-Accessories/cat/id/117' class="generic-anchor footer-list-anchor" target="_blank">HANDBAGS & JEWELRY</a></li>
+                    </ul>
+                    <ul class="footer-list-top">
+                        <li id='help'>
+                            <h4 class="footer-list-header">Please Help Me</h4>
+                        </li>
+                        <li><a href='/shop/about-contact' class="generic-anchor footer-list-anchor" itemprop="significantLink">CONTACT</a></li>
+                        <li><a href='/faq.html' class="generic-anchor footer-list-anchor" itemprop="significantLink">FAQ</a></li>
+                        <li id='find-a-store'><a href='/shop/store-locator' class="generic-anchor footer-list-anchor" itemprop="significantLink">STORE LOCATOR</a></li>
+                        <li id='user-registration'><a href='/shop/user-registration?URL=' class="generic-anchor footer-list-anchor" itemprop="significantLink">NEW USERS</a></li>
+                        <li id='order-tracking'><a href='/shop/order-status' itemprop="significantLink" class="generic-anchor footer-list-anchor">ORDER STATUS</a></li>
+                    </ul>
+                    <section class="footer-social-section flex-rw">
+                        <span class="footer-social-overlap footer-social-connect">
+		  CONNECT <span class="footer-social-small">with</span> US
+                        </span>
+                        <span class="footer-social-overlap footer-social-icons-wrapper">
+		  <a href="https://www.pinterest.com/paviliongift/" class="generic-anchor" target="_blank" title="Pinterest" itemprop="significantLink"><i class="fa fa-pinterest"></i></a>
+		  <a href="https://www.facebook.com/paviliongift" class="generic-anchor" target="_blank" title="Facebook" itemprop="significantLink"><i class="fa fa-facebook"></i></a>
+		  <a href="https://twitter.com/PavilionGiftCo" class="generic-anchor" target="_blank" title="Twitter" itemprop="significantLink"><i class="fa fa-twitter"></i></a>
+		  <a href="http://instagram.com/paviliongiftcompany" class="generic-anchor" target="_blank" title="Instagram" itemprop="significantLink"><i class="fa fa-instagram"></i></a>
+		  <a href="https://www.youtube.com/channel/UCYgUODvd0qXbu_LkUWpTVEg" class="generic-anchor" target="_blank" title="Youtube" itemprop="significantLink"><i class="fa fa-youtube"></i></a>
+		  <a href="https://plus.google.com/+Paviliongift/posts" class="generic-anchor" target="_blank" title="Google Plus" itemprop="significantLink"><i class="fa fa-google-plus"></i></a>
+		  </span>
+                    </section>
+                    <section class="footer-bottom-section flex-rw">
+                        <div class="footer-bottom-wrapper">
+                            <i class="fa fa-copyright" role="copyright">
+	 
+	</i> 2019 Pavilion in <address class="footer-address" role="company address">Bergen, NY</address><span class="footer-bottom-rights"> - All Rights Reserved - </span>
+                        </div>
+                        <div class="footer-bottom-wrapper">
+                            <a href="/terms-of-use.html" class="generic-anchor" rel="nofollow">Terms</a> | <a href="/privacy-policy.html" class="generic-anchor" rel="nofollow">Privacy</a>
+                        </div>
+                    </section>
+                </footer>
+            </td>
+        </tr>
+
+
+
+
+
+
+
+    </table>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+
+function mainlogin() {
+            var model = {
+
+                "email": document.getElementById("logInEmail").value,
+                "password": document.getElementById("logInPassword").value,
+           
+            };
+
+
+            $.ajax({
+                type: "POST",
+                url: "/admin/login",
+
+                ContentType: "application/json ;charset=UTF-8",
+
+                crossOrigin: true,
+                dataType: "json",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                data: this.JSON.stringify(model),
+
+                success: function(data) {
+
+                    console.log(data);
+                    if (data[0] == "true") {
+                        console.log("true");
+                        localStorage.setItem("loggin", true);
+                        localStorage.setItem("email", data[1]);
+                        window.location.href = "index.html";
+                    } else {
+                        document.getElementById("loginerrorpanel").innerHTML = data[0];
+
+                    }
+
+            
+
+                },
+                error: function(jqXHR, testStatus, errorThrown) {
+                    console.log("error");
+                }
+            });
+        }
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function mainregister() {
+            var model = {
+
+                "email": document.getElementById("registerEmail").value,
+                "password": document.getElementById("registerPassword").value,
+                "password2": document.getElementById("RepeatedRegisterPassword").value,
+            };
+
+
+            $.ajax({
+                type: "POST",
+                url: "/admin/addUser",
+
+                ContentType: "application/json ;charset=UTF-8",
+
+                crossOrigin: true,
+                dataType: "json",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                data: this.JSON.stringify(model),
+
+                success: function(data) {
+
+                    console.log(data);
+                    if (data[0] == "true") {
+                        console.log("true");
+                        localStorage.setItem("loggin", true);
+                        localStorage.setItem("email", data[1]);
+                        window.location.href = "index.html";
+                    } else {
+                        document.getElementById("registererrorpanel").innerHTML = data[0];
+
+                    }
+
+            
+
+                },
+                error: function(jqXHR, testStatus, errorThrown) {
+                    console.log("error");
+                }
+            });
+        }
+
+        
+
+    </script>
+
+<script>
+
+ 
+const sign_in_btn = document.querySelector("#sign-in-btn");
+  const sign_up_btn = document.querySelector("#sign-up-btn");
+  const container = document.querySelector(".container");
+  
+  sign_up_btn.addEventListener("click", () => {
+    container.classList.add("sign-up-mode");
+  });
+  
+  sign_in_btn.addEventListener("click", () => {
+    container.classList.remove("sign-up-mode");
+  });
+
+</script>
+
+ </script>     
+ <script src="index.js"></script>
+
+</body>
+
+</html>
