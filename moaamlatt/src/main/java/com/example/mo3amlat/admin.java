@@ -1,11 +1,27 @@
 package com.example.mo3amlat;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
+
+
+
 @RestController
 public class admin {
 
@@ -83,36 +99,85 @@ if(!isValidEmailAddress(usr.getEmail())) {
 
       return loginerrors;
   }
-	@PostMapping(
-            value = "/admin/moamle")
-	public void addmoamlef(user usr) {
-		  int indexofemail = -1;
-	      Object[] userarray = userservices.getAllUsers().toArray();
+
+	@Autowired
+	moaamlehService moaamlehService;
+	@PostMapping(value="/admin/addMoaamleh")
+	public String addMoaamleh(@RequestBody moaamleh moaamleh) {
+		
+		
+		moaamleh n = new moaamleh();
+		n.setNumber(moaamleh.getNumber());
+		n.setName(moaamleh.getName());
+		n.setDate(moaamleh.getDate());
+		n.setPlace(moaamleh.getPlace());
+		n.setDetails(moaamleh.getDetails());
+		n.setEmail_user(moaamleh.getEmail_user());
+		
+		moaamlehService.save(n);
+		return "ew";
+	}
+	
+	
+	@PostMapping(value="/admin/updatmoamaleh")
+	public String updatmo(@RequestBody moaamleh moaamleh) {
+		
+	     Object[] userarray = moaamlehService.listAll().toArray();
 	      for (int i = 0; i < userarray.length; i++) {
-	          if(usr.getEmail().equals(((user) userarray[i]).getEmail())) {
-	              indexofemail=i;
+	          if(moaamleh.getId()==((moaamleh) userarray[i]).getId()) {
+
+	      		moaamleh n = (moaamleh) userarray[i];
+	      		n.setNumber(moaamleh.getNumber());
+	      		n.setName(moaamleh.getName());
+	      		n.setDate(moaamleh.getDate());
+	      		n.setPlace(moaamleh.getPlace());
+	      		n.setDetails(moaamleh.getDetails());
+	      		n.setEmail_user(moaamleh.getEmail_user());
+	      		
+	      		moaamlehService.save(n);
 	              break;
 	          }
 	      }
-	 user updateusr = (user) userarray[indexofemail];
-	 ArrayList<moaamleh> list = updateusr.getMoamalat();
-	 list.add(usr.getSendmoamala());
-	 updateusr.setMoamalat(list);
-	 userservices.saveUser(updateusr);
-	 
+		
+		return "ew";
 	}
 	
-	@PostMapping(value="gettable")
-	public ArrayList<moaamleh> gettable(@RequestBody user usr){
-		Object[] userarray =userservices.getAllUsers().toArray();
-		
-		for (int i = 0; i < userarray.length; i++) {
-		     if(usr.getEmail().equals(((user) userarray[i]).getEmail())) {
-	            return ((user) userarray[i]).getMoamalat();
-	              
-		
-		     }	
+	
+	@GetMapping("/admin/getAll")
+	public List<moaamleh> getAllUsers()
+	{
+		return moaamlehService.listAll();
 	}
 	
-	return null;
-	}}
+	
+	@GetMapping("admin/deleteUser/{id}")
+	public void removeById(@RequestParam(name="id") int id)
+	{
+		moaamlehService.removeMoaamleh(id);
+	}
+	@GetMapping("admin/updateUser/{id}")
+	public void updateById(@RequestParam(name="id") int id)
+	{
+		moaamlehService.save(moaamlehService.get(id));
+	}
+	
+	@PostMapping("admin/Splace/{place}")
+	public ArrayList<moaamleh> Splace(@RequestParam(name="place") String place){
+		return moaamlehService.Splace(place);
+	}
+	@PostMapping("admin/Snumber/{number}")
+	public ArrayList<moaamleh> Snumber(@RequestParam(name="number") String number){
+		return moaamlehService.Snumber(number);
+	}
+	@PostMapping("admin/Sname/{name}")
+	public ArrayList<moaamleh> Sname(@RequestParam(name="name") String name){
+		return moaamlehService.Sname(name);
+	}
+	@PostMapping("admin/Sdate/{date}")
+	public ArrayList<moaamleh> Sdate(@RequestParam(name="date") String date){
+		return moaamlehService.Sdate(date);
+	}
+	
+	
+	
+	}

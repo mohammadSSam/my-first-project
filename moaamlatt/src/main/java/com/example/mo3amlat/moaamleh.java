@@ -20,7 +20,7 @@ public class moaamleh implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	int id;
 	@Column
-	int number;
+	String number;
 	@Column
 	String place;
 	@Column
@@ -29,15 +29,18 @@ public class moaamleh implements Serializable {
 	String name;
 	@Column
 	String details;
+	@Column
+	String email_user;
+	
 	@Override
 	public String toString() {
 		return "moaamleh [number=" + number + ", place=" + place + ", date=" + date + ", name=" + name + ", details="
 				+ details + "]";
 	}
-	public int getNumber() {
+	public String getNumber() {
 		return number;
 	}
-	public void setNumber(int number) {
+	public void setNumber(String number) {
 		this.number = number;
 	}
 	public String getPlace() {
@@ -64,7 +67,7 @@ public class moaamleh implements Serializable {
 	public void setDetails(String details) {
 		this.details = details;
 	}
-	public moaamleh(int number, String place, String date, String name, String details) {
+	public moaamleh(String number, String place, String date, String name, String details) {
 		super();
 		this.number = number;
 		this.place = place;
@@ -75,6 +78,19 @@ public class moaamleh implements Serializable {
 	public moaamleh() {
 		super();
 	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getEmail_user() {
+		return email_user;
+	}
+	public void setEmail_user(String email_user) {
+		this.email_user = email_user;
+	}
+	
 	
 	
 

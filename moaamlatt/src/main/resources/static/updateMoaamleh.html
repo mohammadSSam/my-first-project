@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="UTF-8">
+<title>mo3amlatkom AshaL!</title>
+ <link rel="icon" type="image/x-icon" href="images/icons8-profiles-48 (1).png">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script>
+
+var loggedin = localStorage.getItem("loggin");
+if (loggedin === null) {
+	   window.location.replace("login.html");
+	   alert("please sign in to enter the web site");
+}
+
+
+</script>
+<style>
+#pp{
+position:fixed;
+bottom:2px;
+right:3px;
+}
+.btn {
+  background-color: DodgerBlue; /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 16px; /* Some padding */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  font-size: 40px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  
+}
+#del{
+position:absolute;
+top:340px;
+left:60px;
+width: 1240px;
+}
+#idDelIn{
+position:absolute;
+top:570px;
+left:70px;
+height:45px;
+font-size:24px;
+border:2px solid DodgerBlue;
+color:RoyalBlue;
+}
+.addinputs{
+position:absolute;
+height:45px;
+font-size:24px;
+border:2px solid DodgerBlue;
+color:RoyalBlue;
+top:200px;
+left:200px;
+text-align: right;
+}
+#details{
+	position: absolute;
+	top:300px;
+	left:40%;
+	width:300px;
+	height: 200px;
+	resize: none;
+}
+
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: RoyalBlue;
+}
+#s{
+color:gray;
+font-size:14px;
+position:absolute;
+right:10px;
+top:15px;
+}
+
+#f{
+position:absolute;
+left:30px;
+top:1px;
+}
+#add{
+position:absolute;
+width:300px;
+height: 200px;
+left:70%;
+top:30%;
+}
+#personName{
+	top:120px;
+    left:40%;
+}
+#dateM{
+	top:240px;
+left:40%;
+}
+#place{
+	top:180px;
+left:40%;	
+}
+#mowakeaaName{
+	top:60px;
+    left:40%;
+}
+#update{
+position:absolute;
+width:400px;
+height: 200px;
+top:120px;
+left:60px;
+}
+#img{
+position:absolute;
+left:7px;
+top:10px;
+}
+
+.img{
+position:absolute;
+left:50px;
+top:1px;
+}
+#loGOut{
+position:absolute;
+top:12px;
+left:350px;
+}
+#SN{
+	position: absolute;
+	top:432px;
+	left:1000px;
+}
+#SBN{
+	position: absolute;
+	top:432px;
+	left:935px;	
+	height: 45px;
+	font-size: 24px;
+	width:50px;
+}
+#SD{
+	position: absolute;
+	top:488px;
+	left:1000px;
+}
+#SBD{
+	position: absolute;
+	top:488px;
+	left:935px;	
+	height: 45px;
+	font-size: 24px;
+	width:50px;
+}
+#SBP{
+	position: absolute;
+	top:432px;
+	left:60px;
+	width:50px;
+	height: 45px;
+	font-size: 24px;
+
+}
+#SP{
+	position: absolute;
+	top:432px;
+	left:125px;	
+}
+#SBM{
+	position: absolute;
+	top:488px;
+	left:60px;
+	width:50px;
+	height: 45px;
+	font-size: 24px;
+}
+#SM{
+	position: absolute;
+	top:488px;
+	left:125px;
+}
+#asmona{
+	position: absolute;
+	top:450px;
+	left:450px;
+	font-size: 42px;
+	font-style: italic;
+	text-shadow: 2px 2px;
+	opacity: 0.5;
+	color: darkblue;
+	}
+
+</style>
+</head>
+<body>
+	<!-- create navigation bar ( header) -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<img src="images/documents.png" id="img">
+				<img src="images/icons8-profiles-48 (1).png" class="img"/>
+				<a class="navbar-brand" href="#" th:href="@{/}">mo3amlatkom AshaaL !</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+<li id="s"> <span id="emaail"  sec:authentication="principal.username"><div  ></div></span></li>				</ul>
+				                         <li>   <button id="loGOut" style="border: 5px solid DodgerBlue ;" onclick="go();">Log Out</button></li>
+				
+			</div>
+		</div>
+	</nav>
+
+	<br>
+	<br>
+	<form>
+	
+	<button id="add" onclick="" class="btn" ><i class="fa fa-refresh" aria-hidden="true"></i></button>
+	<img src="images/participant.png" id="pp">
+	
+	
+	
+		<input id="personName" class="addinputs" placeholder="ادخل اسم صاحب المعاملة"/>
+		<input id="dateM" class="addinputs" placeholder=" day/month/year بالارقام فقط ودون اختصار ادخل تاريخ المعاملة"/>
+		<input id="place" class="addinputs" placeholder="ادخل منطقة المعاملة"/>
+		<textarea id="details" class="addinputs" placeholder="ادخل تفاصيل المعاملة" rows="2" cols="3" maxlength="64"></textarea>
+		<input id="mowakeaaName" class="addinputs" placeholder="ادخل رقم المعاملة"/>
+		
+	</form>
+	
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script>
+
+
+	
+
+    var loggedin = localStorage.getItem("loggin");
+        if (loggedin === null) {
+          
+        } else {
+        	
+        	
+        	document.getElementById("emaail").innerHTML=localStorage.getItem("email");
+
+        }
+
+
+function go(){
+    window.localStorage.clear();
+    window.localStorage.setItem('myMn', null);
+    window.location.replace('login.html');
+ }
+
+</script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+	$.ajax(
+			{
+				type:"get",
+				url : "admin/getAll",
+				
+				ContentType:"application/json ;charset=UTF-8",
+				
+				crossOrigin:true,
+				dataType:"json",
+				headers: {
+					'Accept': 'application/json',
+					'Content-Type': 'application/json'
+					},
+					
+				
+				success:function(result)
+				{
+					console.log(result)
+					var table = $(".table")
+					
+					
+					for(i=0;i<result.length;i++)
+						{
+						var x = localStorage.getItem("id");
+						console.log(x);
+						if(result[i]["id"]==x){
+							document.getElementById("personName").innerHTML=result[i]["name"];
+							
+							
+						}
+						}
+					
+				},error:function(jqXHR,testStatus,errorThrown)
+				{
+					alert("error");
+				}
+			});
+	});
+	
+</script>
+			
+		</body>
+</html>

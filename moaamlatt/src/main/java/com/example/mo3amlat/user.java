@@ -36,25 +36,16 @@ public class user implements Serializable{
 	@Column
 	private boolean verficated;
 	@Column
-	private ArrayList<moaamleh> moamalat;
-	private moaamleh sendmoamala;
-
+	 ArrayList<Integer> moaamlatId;
 
 	
-	public moaamleh getSendmoamala() {
-		return sendmoamala;
+	
+	public ArrayList<Integer> getMoaamlatId() {
+		return moaamlatId;
 	}
 
-	public void setSendmoamala(moaamleh sendmoamala) {
-		this.sendmoamala = sendmoamala;
-	}
-
-	public ArrayList<moaamleh> getMoamalat() {
-		return moamalat;
-	}
-
-	public void setMoamalat(ArrayList<moaamleh> moamalat) {
-		this.moamalat = moamalat;
+	public void setMoaamlatId(ArrayList<Integer> moaamlatId) {
+		this.moaamlatId = moaamlatId;
 	}
 
 	public static long getSerialversionuid() {

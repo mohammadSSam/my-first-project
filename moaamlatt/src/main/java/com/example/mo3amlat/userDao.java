@@ -16,7 +16,7 @@ import com.sun.istack.Nullable;
 import antlr.collections.List;
 
 @Repository
-public interface userDao extends JpaRepository<user,Integer>{
+public interface userDao extends JpaRepository<user,Integer{
 	
 	
 

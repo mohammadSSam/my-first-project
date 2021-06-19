@@ -9,7 +9,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	crossorigin="anonymous">
-	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script>
 
@@ -22,6 +22,7 @@ if (loggedin === null) {
 
 </script>
 <style>
+
 #pp{
 position:fixed;
 bottom:2px;
@@ -199,6 +200,22 @@ left:350px;
 	opacity: 0.5;
 	color: darkblue;
 	}
+#upddate{
+background-color:rgb(248, 115, 111);
+color:white;
+}
+#sirchBy{
+color:white;
+position:absolute;
+top:15px;
+left:45%;
+}
+#sia{
+position: absolute;
+	top:15px;
+	left:40%;
+color:white;
+}
 
 </style>
 </head>
@@ -215,6 +232,7 @@ left:350px;
 						class="icon-bar"></span>
 				</button>
 				<img src="images/documents.png" id="img">
+	
 				<img src="images/icons8-profiles-48 (1).png" class="img"/>
 				<a class="navbar-brand" href="#" th:href="@{/}">mo3amlatkom AshaaL !</a>
 			</div>
@@ -222,54 +240,69 @@ left:350px;
 				<ul class="nav navbar-nav">
 <li id="s"> <span id="emaail"  sec:authentication="principal.username"><div  ></div></span></li>				</ul>
 				                         <li>   <button id="loGOut" style="border: 5px solid DodgerBlue ;" onclick="go();">Log Out</button></li>
-				
+				<li id="s"> <span id="emaail"  sec:authentication="principal.username"><div  ></div></span></li>	
 			</div>
 		</div>
-	</nav>
-
-	<br>
-	<br>
-	<form>
-	<button class="btn" id="del"><i class="fa fa-trash"></i></button>
-	<button class="btn" id="add"><i class="fa fa-plus"></i></button>
-	<button class="btn" id="update"><i class="fa fa-refresh"></i></button>
-	<img src="images/participant.png" id="pp">
-	
-	
-	
-		<input id="personName" class="addinputs" placeholder="ادخل اسم صاحب المعاملة"/>
-		<input id="dateM" class="addinputs" placeholder=" day/month/year بالارقام فقط ودون اختصار ادخل تاريخ المعاملة"/>
-		<input id="place" class="addinputs" placeholder="ادخل منطقة المعاملة"/>
-		<textarea id="details" class="addinputs" placeholder="ادخل تفاصيل المعاملة" rows="2" cols="3" maxlength="400"></textarea>
-		<input id="mowakeaaName" class="addinputs" placeholder="ادخل رقم المعاملة"/>
+		<button onclick="window.location.href='aboutUs.html';" style="border: 5px solid DodgerBlue ;padding:2px;background-color:white;text-decoration:none;color:black;position:absolute;top:11px;left:450px;" >about us</button>
 		
+	<div id="sia">
+	Search by:
+	</div>
+		
+		<form id="sirchBy">
+		 <input type="radio" name="choice" id="rNumber" value="number" onclick="check(this.value)"> number
+        <input type="radio" name="choice" id="rName" value="name" onclick="check(this.value)"> name
+         <input type="radio" name="choice" id="rPlace" value="place" onclick="check(this.value)"> place
+        <input type="radio" name="choice" id="rDate" value="date" onclick="check(this.value)"> date
+        <input type="text" style="color:black;" id="answer" />
+        <input type="button" id="btnSearch" onclick="Splace(document.getElementById('answer').value);" value="Search" style="background-color:white;color:DodgerBlue;">
 	</form>
-	<form>
-		<input id="SN" class="addinputs" type="text" placeholder="بحث بواسطة الاسم"/>
-		<input id="SD" class="addinputs" type="text" placeholder="بحث بواسطة التاريخ"/>
-		<input id="SP" class="addinputs" type="text" placeholder="بحث بواسطة المنطقة"/>
-		<input id="SM" class="addinputs" type="text" placeholder="بحث بواسطة الرقم"/>
-		<button class="btn" id="SBN"><i class="fa fa-male"></i></button>
-		<button class="btn" id="SBD"><i class="fa fa-clock-o"></i></button>
-		<button class="btn" id="SBP"><i class="fa fa-home"></i></button>
-		<button class="btn" id="SBM"><i class="fa fa-address-card"></i></button>
-		<div id="asmona">mo3amlatkom Ashaal !</div>
-	</form>
-
-<script>
-
-
+		
+	</nav>
+	<div id="sec">
+	 <table class="table" style="position:absolute;top:70px;" id="table">
+        <thead>
+        	<tr>
+        	<th>id</th>
+        	<th>number</th> 
+        	<th>place</th>
+        	<th>date</th>
+        	<th>name</th>
+        	<th>details</th>
+        	</tr>
+        	
+        	</thead>
+        	
+        </table>
+	</div>
 	
+	<a href="addMoaamleh.html" style="position:absolute;top:50px;left:50px;">go to add moaamleh</a>
+	
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script type="text/javascript">
+    function searchbynumber (number){
+    	var table = $(".table")
+    	
+    }
+</script>
+     <script>
+     function check(browser) {
+    	  document.getElementById("answer").placeholder=`Search by ${browser}`;
+    	}
+    </script>
+	<script>
+	 var loggedin = localStorage.getItem("loggin");
+     if (loggedin === null) {
+       
+     } else {
+     	
+     	
+     	document.getElementById("emaail").innerHTML=localStorage.getItem("email");
 
-    var loggedin = localStorage.getItem("loggin");
-        if (loggedin === null) {
-          
-        } else {
-        	
-        	
-        	document.getElementById("emaail").innerHTML=localStorage.getItem("email");
-
-        }
+     }
+        
 
 
 function go(){
@@ -277,50 +310,341 @@ function go(){
     window.localStorage.setItem('myMn', null);
     window.location.replace('login.html');
  }
-function mainregister() {
-  var momaleh ={
-"number":document.getElementById("mowakeaaName").value,
-"place":document.getElementById("place").value,
-"date":document.getElementById("dateM").value,
-"name":document.getElementById("personName").value,
-"details":document.getElementById("details").value,
-  }
-            var model = {
+    
+	</script>
+	
+	<script type="text/javascript">
+	$(document).ready(function(){
+		
+	$.ajax(
+			{
+				type:"get",
+				url : "admin/getAll",
+				
+				ContentType:"application/json ;charset=UTF-8",
+				
+				crossOrigin:true,
+				dataType:"json",
+				headers: {
+					'Accept': 'application/json',
+					'Content-Type': 'application/json'
+					},
+					
+				
+				success:function(result)
+				{
+					console.log(result)
+					var table = $(".table")
+					
+					
+					for(i=0;i<result.length;i++)
+						{
+						var x = localStorage.getItem("email");
+						console.log(x);
+						if(result[i]["email_user"]==x){
+							var x1= result[i]["id"];
+							var x2= result[i]["number"];
+							var x3= result[i]["place"];
+							var x4= result[i]["date"];
+							var x5= result[i]["name"];
+							var x6= result[i]["details"];
+							var queryString = "?id=" + x1 + "&number=" + x2 + "&place=" +x3 + "&date=" +x4 + "&name=" + x5 + "&details=" +x6;
+							table.append('<tr><td>'+ result[i]["id"] + '</td>' +
+									'<td class="number">'+result[i]["number"] + '</td>'+
+									'<td>'+ result[i]["place"] + '</td>'+
+									'<td>'+ result[i]["date"] + '</td>'+
+									'<td>'+ result[i]["name"] + '</td>'+
+									'<td>'+ result[i]["details"] + '</td>'+
+									'<td><button class="btn btn-danger" id="remove" onclick="removeUser('+result[i]["id"]+')">حذف</button></td>'+
+									'<td><a href="update.html?id='+""+x1+""+'&number='+""+x2+""+'&place='+""+x3+""+'&date='+""+x4+""+'&name='+""+x5+""+'&details='+""+x6+""+'"><button id="upddate"type="button" class="btn btn-warning" onclick="">تعديل</button></a></td>'+
+									'</tr>'
+						
+						
+							);
+							
+							$('message').html(table);
+						}
+						}
+					
+				},error:function(jqXHR,testStatus,errorThrown)
+				{
+					alert("error");
+				}
+			});
+	});
+	
+</script>
+<script>
 
-                "email": document.getElementById("registerEmail").value,
-                "password": document.getElementById("registerPassword").value,
-                "password2": document.getElementById("RepeatedRegisterPassword").value,
-            };
+</script>
+<script>
+function removeUser(id){
+         
+         $.ajax({
+                url: "admin/deleteUser/id?id="+id,
+                method:'GET',
+                dataType:'json',
+                success:function(data){
+                    alert("the moaamleh  number "+id+" is  deleted");
+                    location.reload();
+                
+            },error: function(jqXHR,testStatus,errorThrown){
+            	alert("faild !!!");
+            }
+         });
+}
 
+function updateUser(id){
+    
+    $.ajax({
+           url: "admin/updateUser/id?id="+id,
+           method:'GET',
+           dataType:'json',
+           success:function(data){
+               alert("the user  number "+id+" is  updated");
+               location.reload();
+           
+       },error: function(jqXHR,testStatus,errorThrown){
+       	alert("faild !!!");
+       }
+    });
+}
 
-            $.ajax({
-                type: "POST",
-                url: "/admin/addUser",
+function Splace(place){
+	 if( $('#rPlace').is(':checked')){
+	$.ajax(
+			{
+				 type: "POST",
+	                url: "/admin/Splace/place?place="+place,
+					
+	                ContentType: "application/json ;charset=UTF-8",
 
-                ContentType: "application/json ;charset=UTF-8",
+	                crossOrigin: true,
+	                dataType: "json",
+	                headers: {
+	                    'Accept': 'application/json',
+	                    'Content-Type': 'application/json'
+	                },
+	                
 
-                crossOrigin: true,
-                dataType: "json",
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                data: this.JSON.stringify(model),
+					
+				
+				success:function(result)
+				{
+					var table = $(".table")
+					
+					$('#table').empty();
 
-                success: function(data) {
+					for(i=0;i<result.length;i++)
+						{
+						var x = localStorage.getItem("email");
+						
+						if(result[i]["email_user"]==x){
+							var x1= result[i]["id"];
+							var x2= result[i]["number"];
+							var x3= result[i]["place"];
+							var x4= result[i]["date"];
+							var x5= result[i]["name"];
+							var x6= result[i]["details"];
+							table.append('<tr><td>'+ result[i]["id"] + '</td>' +
+									'<td class="number">'+result[i]["number"] + '</td>'+
+									'<td>'+ result[i]["place"] + '</td>'+
+									'<td>'+ result[i]["date"] + '</td>'+
+									'<td>'+ result[i]["name"] + '</td>'+
+									'<td>'+ result[i]["details"] + '</td>'+
+									'<td><button class="btn btn-danger" id="remove" onclick="removeUser('+result[i]["id"]+')">حذف</button></td>'+
+									'<td><a href="update.html?id='+""+x1+""+'&number='+""+x2+""+'&place='+""+x3+""+'&date='+""+x4+""+'&name='+""+x5+""+'&details='+""+x6+""+'"><button id="upddate"type="button" class="btn btn-warning" onclick="">تعديل</button></a></td>'+
+									'</tr>'
+						
+						
+							);
+							
+							$('message').html(table);
+						}
+						}
+					
+				},error:function(jqXHR,testStatus,errorThrown)
+				{
+					alert("error");
+				}
+			});
+}
+	 else if( $('#rNumber').is(':checked')){
+		 $.ajax(
+					{
+						 type: "POST",
+			                url: "/admin/Snumber/number?number="+place,
+							
+			                ContentType: "application/json ;charset=UTF-8",
 
+			                crossOrigin: true,
+			                dataType: "json",
+			                headers: {
+			                    'Accept': 'application/json',
+			                    'Content-Type': 'application/json'
+			                },
+			                
 
+							
+						
+						success:function(result)
+						{
+							var table = $(".table")
+							
+							$('#table').empty();
 
-            
+							for(i=0;i<result.length;i++)
+								{
+								var x = localStorage.getItem("email");
+								
+								if(result[i]["email_user"]==x){
+									var x1= result[i]["id"];
+									var x2= result[i]["number"];
+									var x3= result[i]["place"];
+									var x4= result[i]["date"];
+									var x5= result[i]["name"];
+									var x6= result[i]["details"];
+									table.append('<tr><td>'+ result[i]["id"] + '</td>' +
+											'<td class="number">'+result[i]["number"] + '</td>'+
+											'<td>'+ result[i]["place"] + '</td>'+
+											'<td>'+ result[i]["date"] + '</td>'+
+											'<td>'+ result[i]["name"] + '</td>'+
+											'<td>'+ result[i]["details"] + '</td>'+
+											'<td><button class="btn btn-danger" id="remove" onclick="removeUser('+result[i]["id"]+')">حذف</button></td>'+
+											'<td><a href="update.html?id='+""+x1+""+'&number='+""+x2+""+'&place='+""+x3+""+'&date='+""+x4+""+'&name='+""+x5+""+'&details='+""+x6+""+'"><button id="upddate"type="button" class="btn btn-warning" onclick="">تعديل</button></a></td>'+
+											'</tr>'
+								
+								
+									);
+									
+									$('message').html(table);
+								}
+								}
+							
+						},error:function(jqXHR,testStatus,errorThrown)
+						{
+							alert("error");
+						}
+					});
+	 }
+	 else if( $('#rName').is(':checked')){
+		 $.ajax(
+					{
+						 type: "POST",
+			                url: "/admin/Sname/name?name="+place,
+							
+			                ContentType: "application/json ;charset=UTF-8",
 
-                },
-                error: function(jqXHR, testStatus, errorThrown) {
-                    console.log("error");
-                }
-            });
-        }
+			                crossOrigin: true,
+			                dataType: "json",
+			                headers: {
+			                    'Accept': 'application/json',
+			                    'Content-Type': 'application/json'
+			                },
+			                
 
-			document.getElementById("welcome").innerHTML = x;
-			</script>
+							
+						
+						success:function(result)
+						{
+							var table = $(".table")
+							
+							$('#table').empty();
+
+							for(i=0;i<result.length;i++)
+								{
+								var x = localStorage.getItem("email");
+								
+								if(result[i]["email_user"]==x){
+									var x1= result[i]["id"];
+									var x2= result[i]["number"];
+									var x3= result[i]["place"];
+									var x4= result[i]["date"];
+									var x5= result[i]["name"];
+									var x6= result[i]["details"];
+									table.append('<tr><td>'+ result[i]["id"] + '</td>' +
+											'<td class="number">'+result[i]["number"] + '</td>'+
+											'<td>'+ result[i]["place"] + '</td>'+
+											'<td>'+ result[i]["date"] + '</td>'+
+											'<td>'+ result[i]["name"] + '</td>'+
+											'<td>'+ result[i]["details"] + '</td>'+
+											'<td><button class="btn btn-danger" id="remove" onclick="removeUser('+result[i]["id"]+')">حذف</button></td>'+
+											'<td><a href="update.html?id='+""+x1+""+'&number='+""+x2+""+'&place='+""+x3+""+'&date='+""+x4+""+'&name='+""+x5+""+'&details='+""+x6+""+'"><button id="upddate"type="button" class="btn btn-warning" onclick="">تعديل</button></a></td>'+
+											'</tr>'
+								
+								
+									);
+									
+									$('message').html(table);
+								}
+								}
+							
+						},error:function(jqXHR,testStatus,errorThrown)
+						{
+							alert("error");
+						}
+					});
+	 }
+	 else if( $('#rDate').is(':checked')){
+		 $.ajax(
+					{
+						 type: "POST",
+			                url: "/admin/Sdate/date?date="+place,
+							
+			                ContentType: "application/json ;charset=UTF-8",
+
+			                crossOrigin: true,
+			                dataType: "json",
+			                headers: {
+			                    'Accept': 'application/json',
+			                    'Content-Type': 'application/json'
+			                },
+			                
+
+							
+						
+						success:function(result)
+						{
+							var table = $(".table")
+							
+							$('#table').empty();
+
+							for(i=0;i<result.length;i++)
+								{
+								var x = localStorage.getItem("email");
+								
+								if(result[i]["email_user"]==x){
+									var x1= result[i]["id"];
+									var x2= result[i]["number"];
+									var x3= result[i]["place"];
+									var x4= result[i]["date"];
+									var x5= result[i]["name"];
+									var x6= result[i]["details"];
+									table.append('<tr><td>'+ result[i]["id"] + '</td>' +
+											'<td class="number">'+result[i]["number"] + '</td>'+
+											'<td>'+ result[i]["place"] + '</td>'+
+											'<td>'+ result[i]["date"] + '</td>'+
+											'<td>'+ result[i]["name"] + '</td>'+
+											'<td>'+ result[i]["details"] + '</td>'+
+											'<td><button class="btn btn-danger" id="remove" onclick="removeUser('+result[i]["id"]+')">حذف</button></td>'+
+											'<td><a href="update.html?id='+""+x1+""+'&number='+""+x2+""+'&place='+""+x3+""+'&date='+""+x4+""+'&name='+""+x5+""+'&details='+""+x6+""+'"><button id="upddate"type="button" class="btn btn-warning" onclick="">تعديل</button></a></td>'+
+											'</tr>'
+								
+								
+									);
+									
+									$('message').html(table);
+								}
+								}
+							
+						},error:function(jqXHR,testStatus,errorThrown)
+						{
+							alert("error");
+						}
+					});
+	 }
+}
+
+</script>
 		</body>
 </html>
